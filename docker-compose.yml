@@ -1,0 +1,17 @@
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'c9'
+      MYSQL_USER: 'c9'
+      MYSQL_PASSWORD: 'c9@123'
+      MYSQL_ROOT_PASSWORD: 'c9@123'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - c9:/var/lib/mysql
+volumes:
+  c9:
