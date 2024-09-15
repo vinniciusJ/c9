@@ -5,8 +5,10 @@ import bd.c9.models.phone.Phone;
 import bd.c9.utils.ViewUtils;
 import de.vandermeer.asciitable.AsciiTable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -32,13 +34,15 @@ public class ClientView {
         )));
     }
 
-    public void showClientsTransactionsStatementsByBankAccount(BankAccount bankAccount, List<BankAccountTransaction> transactions){
+    public void showClientsTransactionsStatementsByBankAccount(BankAccount bankAccount, List<BankAccountTransaction> transactions, LocalDate startDate, LocalDate endDate){
         Client client = bankAccount.getClient();
 
         showClient(client);
 
 
         bankAccountView.showBankAccount(bankAccount);
+
+        showStatementPeriod(startDate, endDate);
 
         bankAccountTransactionView.showBankAccountTransactions(transactions);
     }
@@ -91,6 +95,18 @@ public class ClientView {
             table.addRow(phone.toString());
         }
 
+        table.addRule();
+
+        System.out.println(table.render());
+    }
+
+    private void showStatementPeriod(LocalDate startDate, LocalDate endDate){
+        AsciiTable table = new AsciiTable();
+
+        table.addRule();
+        table.addRow("Data inicial", "Data final");
+        table.addRule();
+        table.addRow(viewUtils.formatDate(startDate), viewUtils.formatDate(endDate));
         table.addRule();
 
         System.out.println(table.render());

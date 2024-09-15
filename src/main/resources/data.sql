@@ -111,10 +111,10 @@ INSERT INTO account_type (name) VALUES ('Empresarial');
 
 INSERT INTO transaction_type (name, description, payment_method)
 VALUES
-    ('Compra com débito', 'Transação de compra via cartão de débito', 0),
-    ('Compra com crédito', 'Transação de compra via cartão de crédito', 1),
-    ('Saque com débito', 'Saque de dinheiro via cartão de débito', 0),
-    ('Pagamento com crédito', 'Pagamento de contas via cartão de crédito', 1);
+    ('Pagamento de boleto', 'Pagamento de conta de energia', 0),
+    ('Deposito', 'Recebimento de deposito', 1),
+    ('Pagamento de PIX', 'Pagamento de PIX', 0),
+    ('PIX recebido', 'Recebimento de PIX', 1);
 
 
 -- Seed para a tabela bank_account_transaction
@@ -229,18 +229,18 @@ VALUES
 
 INSERT INTO bank_account_transaction (transaction_date, amount, transaction_type_id, note, bank_account_account_number)
 VALUES
-    ('2024-09-01', 1500.00, 1, 'Depósito inicial', '12345-6'),    -- Transação associada à conta 1
-    ('2024-09-02', -200.00, 2, 'Saque em dinheiro', '23456-7'),    -- Transação associada à conta 1
-    ('2024-09-03', -300.50, 3, 'Pagamento de conta de luz', '34567-8'),  -- Transação associada à conta 2
+    ('2024-09-01', 1500.00, 1, 'Saque em dinheiro', '12345-6'),    -- Transação associada à conta 1
+    ('2024-09-02', 200.00, 2, 'Deposito em dinheiro', '23456-7'),    -- Transação associada à conta 1
+    ('2024-09-03', 300.50, 3, 'Pagamento de conta de luz', '34567-8'),  -- Transação associada à conta 2
     ('2024-09-04', 500.00, 4, 'Transferência recebida', '45678-9'),  -- Transação associada à conta 1
-    ('2024-09-05', -150.00, 1, 'Compra em supermercado', '56789-0'),  -- Transação associada à conta 2
-    ('2024-09-06', -50.00, 2, 'Pagamento de estacionamento', '67890-1'),  -- Transação associada à conta 3
-    ('2024-09-07', -100.00, 3, 'Pagamento de plano de celular', '78901-2'),  -- Transação associada à conta 3
+    ('2024-09-05', 150.00, 1, 'Compra em supermercado', '56789-0'),  -- Transação associada à conta 2
+    ('2024-09-06', 50.00, 2, 'Recebimento de PIX', '67890-1'),  -- Transação associada à conta 3
+    ('2024-09-07', 100.00, 3, 'Pagamento de plano de celular', '78901-2'),  -- Transação associada à conta 3
     ('2024-09-08', 2500.00, 4, 'Depósito de salário', '89012-3'),  -- Transação associada à conta 4
-    ('2024-09-09', -75.00, 1, 'Compra em restaurante', '90123-4'),  -- Transação associada à conta 4
-    ('2024-09-10', -500.00, 2,'Pagamento de aluguel', '01234-5'),  -- Transação associada à conta 5
-    ('2024-09-11', -30.00, 3, 'Pagamento de transporte público', '12345-6'),  -- Transação associada à conta 5
-    ('2024-09-12', -200.00, 4, 'Transferência enviada para amigo', '23456-7'),  -- Transação associada à conta 1
-    ('2024-09-13', 700.00, 1, 'Reembolso de despesas', '34567-8'),  -- Transação associada à conta 2
-    ('2024-09-14', -80.00, 2, 'Compra de material de escritório', '45678-9'),  -- Transação associada à conta 3
-    ('2024-09-15', -120.00, 3, 'Compra de roupas online', '56789-0');  -- Transação associada à conta 4
+    ('2024-09-09', 75.00, 1, 'Compra em restaurante', '90123-4'),  -- Transação associada à conta 4
+    ('2024-09-10', 500.00, 2,'Recebimento de bônus', '01234-5'),  -- Transação associada à conta 5
+    ('2024-09-11', 30.00, 3, 'Pagamento de transporte público', '12345-6'),  -- Transação associada à conta 5
+    ('2024-09-12', 200.00, 4, 'Transferência recebida', '23456-7'),  -- Transação associada à conta 1
+    ('2024-09-13', 700.00, 1, 'Pagamento de conta de internet', '34567-8'),  -- Transação associada à conta 2
+    ('2024-09-14', 80.00, 2, 'Reembolso de compra', '45678-9'),  -- Transação associada à conta 3
+    ('2024-09-15', 120.00, 3, 'Compra de roupas online', '56789-0');  -- Transação associada à conta 4

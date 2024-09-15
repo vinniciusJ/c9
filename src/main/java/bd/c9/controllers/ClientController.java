@@ -3,6 +3,7 @@ package bd.c9.controllers;
 import bd.c9.models.BankAccount;
 import bd.c9.models.BankAccountTransaction;
 import bd.c9.models.Client;
+import bd.c9.models.PaymentMethod;
 import bd.c9.repositories.BankAccountRepository;
 import bd.c9.repositories.BankAccountTransactionRepository;
 import bd.c9.repositories.ClientRepository;
@@ -13,6 +14,7 @@ import bd.c9.views.ClientView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -60,12 +62,14 @@ public class ClientController {
         LocalDate endDate = viewUtils.inputDate("Data fim: ");
 
         BankAccount bankAccount = bankAccountRepository.findByBankAccountNumber(bankAccountNumber);
+
         List<BankAccountTransaction> transactions = bankAccountTransactionRepository.filterByBankAccountByPeriodAndAccount(startDate, endDate,bankAccountNumber);
+
 
         if(bankAccount == null){
             return;
         }
 
-        clientView.showClientsTransactionsStatementsByBankAccount(bankAccount, transactions);
+        clientView.showClientsTransactionsStatementsByBankAccount(bankAccount, transactions, startDate, endDate);
     }
 }

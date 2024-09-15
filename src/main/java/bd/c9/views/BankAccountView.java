@@ -45,6 +45,4 @@ public class BankAccountView {
 
         System.out.println(table.render());
     }
-
-
 }

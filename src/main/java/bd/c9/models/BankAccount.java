@@ -31,7 +31,8 @@ public class BankAccount {
     @Transient
     public Double getBalance() {
         return transactions.stream()
-                .mapToDouble(BankAccountTransaction::getAmount)
-                .sum();
+                .mapToDouble(transaction ->
+                        transaction.getTransactionType().getPaymentMethod() == PaymentMethod.CREDIT ? transaction.getAmount() : (transaction.getAmount() * -1)
+                ).sum();
     }
 }
